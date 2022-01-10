@@ -1,0 +1,119 @@
+.header {
+  height: 7rem;
+  background-color: var(--color-pure-white);
+  border-bottom: var(--color-grey-light-2);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.logo {
+  height: 3.25rem;
+  margin-left: 2rem;
+}
+
+.search {
+  flex: 0 0 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__input {
+    //* input은 font값이 default로 있어서 inherit을 명시해줘야 한다
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: var(--color-grey-light-2);
+    padding: 0.7rem 2rem;
+    border: none;
+    border-radius: 100px;
+    width: 90%; // 클릭할때 scale effect를 위해서
+    transition: all 0.2s;
+    margin-right: -3.5rem; // button overlapping
+    &:focus {
+      outline: none;
+      width: 100%; // parent selector = search의 width
+      background-color: var(--color-grey-light-3);
+    }
+
+    &::-webkit-input-placeholder {
+      //! webkit only includes Chrome & Safari
+      font-weight: 100;
+      color: var(--color-grey-light-4);
+    }
+  }
+
+  &__input:focus + &__button {
+    //* &__input:focus의 바로 옆 adjecent sibling을 선택하는 방법
+    background-color: var(--color-grey-light-3);
+  }
+
+  &__button {
+    border: none;
+    background-color: var(--color-grey-light-2);
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+  &__icon {
+    height: 2rem;
+    width: 2rem;
+    fill: var(--color-grey-dark-3); //* SVG파일의 color를 바꾸는 방법
+  }
+}
+
+.user-nav {
+  display: flex;
+  align-self: stretch; //! 전체를 cover, parent인 .header의 align-items를 overriding하는 효과
+  align-items: center;
+
+  & > * {
+    //! select all child selectors
+    padding: 0 2rem;
+    cursor: pointer;
+    height: 100%;
+  }
+
+  & > *:hover {
+    background-color: var(--color-grey-light-2);
+  }
+
+  &__icon-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  &__icon {
+    height: 2.25rem;
+    width: 2.25rem;
+    fill: var(--color-grey-dark-3);
+  }
+  &__notification {
+    font-size: 0.8rem;
+    height: 1.75rem;
+    width: 1.75rem;
+    border-radius: 50%;
+    color: var(--color-pure-white);
+    background-color: var(--color-primary);
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    text-align: center;
+  }
+  &__user {
+    display: flex;
+    align-items: center;
+  }
+  &__user-photo {
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+}
