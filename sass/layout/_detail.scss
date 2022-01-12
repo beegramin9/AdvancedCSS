@@ -3,12 +3,13 @@
   padding: 4.5rem;
   gap: 4.5rem;
   background-color: var(--color-grey-light-3);
-  border-bottom: var();
+  border-bottom: var(--line);
+  font-size: 1.4rem;
 }
 
 .description {
   background-color: var(--color-pure-white);
-  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-light);
   flex: 0 0 60%;
   padding: 3rem;
 }
@@ -87,23 +88,77 @@
   }
 }
 .user-reviews {
-  background-color: royalblue;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .review {
+  background-color: var(--color-pure-white);
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: '\201C';
+    position: absolute;
+    top: -4rem;
+    left: -1rem;
+    font-size: 20rem;
+    font-family: sans-serif;
+    line-height: 1;
+    color: var(--color-grey-light-2);
+    z-index: 1;
+  }
+
   &__text {
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
   }
   &__user {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
   }
   &__photo {
+    height: 4.5rem;
+    width: 4.5rem;
+    border-radius: 50%;
   }
   &__user-box {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    gap: 0.4rem;
   }
   &__user-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
   }
   &__user-date {
+    font-size: 1rem;
+    color: var(--color-grey-dark-3);
   }
   &__rating {
+    color: var(--color-primary);
+    font-size: 2.2rem;
+    font-weight: 300;
+  }
+}
+
+// CALL TO ACTION
+.cta {
+  padding: 3.5rem 0;
+  text-align: center;
+
+  &__book-now {
+    font-size: 2.25rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
   }
 }
