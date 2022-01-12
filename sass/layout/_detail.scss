@@ -1,0 +1,109 @@
+.detail {
+  display: flex;
+  padding: 4.5rem;
+  gap: 4.5rem;
+  background-color: var(--color-grey-light-3);
+  border-bottom: var();
+}
+
+.description {
+  background-color: var(--color-pure-white);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+  flex: 0 0 60%;
+  padding: 3rem;
+}
+
+.paragraph:not(:last-of-type) {
+  margin-bottom: 3rem;
+}
+
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: var(--line);
+  border-bottom: var(--line);
+
+  display: flex;
+  gap: 0.7rem 0;
+  flex-wrap: wrap;
+
+  &__item {
+    flex: 0 0 50%;
+    //! 똑같은 아이콘을 HTML에 8번 쓰기 싫다
+    //! 그렇다고 CSS에서 sprite.svg를 사용하긴 어렵다
+    //* 어짜피 한 종류만 쓰니까, 한 종류(single icon)일 때 CSS에서 쓰는 방법
+  }
+  //! pseudo element를 사용하는게 best practice
+  &__item::before {
+    content: '';
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    margin-right: 0.7rem;
+    //* for older browsers: use background-image
+    //! 상대경로는 컴파일되는 style.css를 기준으로!
+    // background-image: url(../img/chevron-thin-right.svg);
+    // background-size: cover;
+
+    //* for newer browsers: masks
+    //* an area where we can see what's behind the element
+    //* 마스크 부분만 보이고 나머지는 parent 배경색으로 가리는 것
+    //* 아이콘을 mask로 만들고, background-color를 설정해서
+    //* look through that mask, see the background area where the icon is
+    background-color: var(--color-primary);
+    -webkit-mask-image: url(../img/chevron-thin-right.svg);
+    -webkit-mask-size: cover; // cover속성: image가 current 크기에 딱 맞게 비율이 조정됨
+    mask-image: url(../img/chevron-thin-right.svg);
+    mask-size: cover; // cover속성: image가 current 크기에 딱 맞게 비율이 조정됨
+  }
+}
+
+.recommend {
+  font-size: 1.3rem;
+  color: var(--color-grey-dark-3);
+
+  display: flex;
+  align-items: center;
+  // gap: 0 4rem; 이미지 많아지면 이미지가 두줄로 밀린다
+  // 이거 대신
+
+  &__count {
+    margin-right: auto; //! 왼쪽으로 쭉 붙어버리면, 나머지 이미지들이 알아서 오른쪽으로
+  }
+  &__friends {
+  }
+  &__photo {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 3px solid var(--color-pure-white);
+    //* border가 안쪽으로 갉아먹어서 이미지를 작게 만든다
+    box-sizing: content-box; //이렇게 하면 밖으로 나갑니다.
+    &:not(:last-child) {
+      //! 겹치기
+      margin-right: -1.5rem;
+    }
+  }
+}
+.user-reviews {
+  background-color: royalblue;
+  flex: 1;
+}
+
+.review {
+  &__text {
+  }
+  &__user {
+  }
+  &__photo {
+  }
+  &__user-box {
+  }
+  &__user-name {
+  }
+  &__user-date {
+  }
+  &__rating {
+  }
+}
