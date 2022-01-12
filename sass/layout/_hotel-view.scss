@@ -1,0 +1,88 @@
+.hotel-view {
+  flex: 1 0 0;
+}
+
+.gallery {
+  display: flex;
+
+  &__photo {
+    width: 100%; //! flexible image
+    display: block; //* inline으로 놔두면 밑에 small white space
+  }
+}
+
+.overview {
+  display: flex;
+  border-bottom: var(--line);
+  align-items: center;
+  // gap: 1rem;
+
+  &__heading {
+    font-size: 2.25rem;
+    font-weight: 300;
+    text-decoration: uppercase;
+    letter-spacing: 1px;
+    padding: 1.5rem 3rem;
+  }
+  &__stars {
+    //! SVG는 inline element, 즉 text처럼 behave한다
+    //! 그래서 밑줄처럼 약간의 공간이 있는 것
+    //! 감싸는 parent selector를 flexbox로 만들어주면 해결된다.
+    display: flex;
+    margin-right: auto; //! flex-grow처럼 늘어나는걸 정해주는 대신 box가 딱 필요하게끔만 정해짐
+  }
+  &__icon--star,
+  &__icon--location {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: var(--color-primary);
+  }
+
+  &__location {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0 0.5rem;
+  }
+  &__rating {
+    color: var(--color-pure-white);
+    background-color: var(--color-primary);
+    margin-left: 3rem;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2.25rem;
+
+    &--average {
+      font-size: 2.25rem;
+      font-weight: 300;
+      margin-bottom: -3px;
+    }
+    &--count {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.btn-inline {
+  border: none;
+  color: var(--color-primary);
+  font-size: inherit; //! 재활용하기 위해, parent를 바꾸면 된다.
+  border-bottom: 1px solid currentColor; //! 현재 color를 따라간다
+  padding-bottom: 2px;
+  display: inline-block;
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 0.4s;
+  &:hover {
+    color: var(--color-grey-dark-1);
+  }
+
+  &:focus {
+    outline: none;
+    animation: pulsate 1s infinite;
+  }
+}
